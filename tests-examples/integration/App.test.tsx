@@ -55,3 +55,16 @@ test('It should not add a note if the title is empty', () => {
   // Vérifier qu'aucune note n'a été ajoutée
   expect(screen.queryByText('Integration Test Content...')).toBeNull();
 });
+
+// Ce test vérifie que la note n'est pas ajoutée si le contenu est vide
+test('It should not add a note if the content is empty', () => {
+  render(<App />);
+
+  fireEvent.change(screen.getByPlaceholderText('Title'), { target: { value: 'Integration Test Note' } });
+  fireEvent.change(screen.getByPlaceholderText('Score'), { target: { value: '12' } });
+
+  fireEvent.click(screen.getByText('Add Note'));
+
+  // Vérifier qu'aucune note n'a été ajoutée
+  expect(screen.queryByText('Integration Test Note')).toBeNull();
+});
