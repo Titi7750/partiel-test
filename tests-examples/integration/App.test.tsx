@@ -20,7 +20,7 @@ test('It should add a new note and display it in the list', () => {
   fireEvent.click(screen.getByText('Add Note'));
 
   // Vérifier que la nouvelle note est affichée dans la liste
-  expect(screen.getByText('Integration Test Note')).toBeTruthy();
+  expect(screen.getByText('Integration Test Note')).toBeTruthy(); // toBeTruthy vérifie que l'élément existe
   expect(screen.getByText('Integration Test Content...')).toBeTruthy();
 });
 
@@ -53,7 +53,7 @@ test('It should not add a note if the title is empty', () => {
   fireEvent.click(screen.getByText('Add Note'));
 
   // Vérifier qu'aucune note n'a été ajoutée
-  expect(screen.queryByText('Integration Test Content...')).toBeNull();
+  expect(screen.queryByText('Integration Test Content...')).toBeNull(); // toBeNull vérifie que l'élément n'existe pas
 });
 
 // Ce test vérifie que la note n'est pas ajoutée si le contenu est vide
